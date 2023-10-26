@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="appicon.png" sizes="512x512" type="image/png">
+
+<!-- Add iOS meta tags and icons -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="ArcheoVirtual22">
+<link rel="apple-touch-icon" href="appicon.png">
+
+<!-- OpenGraph tags -->
+<meta property="og:title" content="ArcheoVirtual22" />
+<meta property="og:description" content="__APPDESC__" />
+<meta property="og:image" content="appicon.png" />
+<meta property="og:image:secure_url" content="appicon.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+
+<!-- PWA manifest -->
+<link rel="manifest" href="app.webmanifest">
+
+<meta name="title" content="/imagine">
+<meta name="description" content="__APPDESC__">
+
+<!-- Add meta theme-color -->
+<meta name="theme-color" content="#000000" />
+
+<title>/imagine</title>
+<link rel="stylesheet" type="text/css" href="/res/css/aton.css">
+<link rel="stylesheet" type="text/css" href="app.css">
+
+<!-- Vendors -->
+<script type="text/javascript" src="/vendors/vendors.min.js"></script>
+<script type="text/javascript" src="/dist/THREE.bundle.js"></script>
+<script type="module" src="/src/ATON.js"></script>
+
+<!-- Main entry -->
+<script>
+let createItem = (url, title, urlCover, descr)=>{
+    let htmlcontent = "";
+
+    let coversizex = 300;
+    let coversizey = 350;
+
+    htmlcontent += "<div class='galleryItem'>";
+
+    // gallery item bg
+    htmlcontent += "<div class='appBlurBG' style='width:"+coversizex+"px; height:"+coversizey+"px; background-image: url(\""+urlCover+"\")'></div>";
+
+    // gallery item content
+    htmlcontent += "<div style='width:"+coversizex+"px; height:"+coversizey+"px; position:absolute; top:0; left:0'>";
+    htmlcontent += "<div class='atonBlockSubTitle'>"+title+"</div><br>";
+
+    htmlcontent += "<a class='atonCover' href='"+url+"'>";
+    htmlcontent += "<img src='"+urlCover+"' style='width:250px; height:auto'>";
+    htmlcontent += "</a>";
+
+    // content
+    //htmlcontent += "<br><div class='atonAuthor'><img class='atonSmallIcon' src='"+ATON.PATH_RES+"icons/user.png'>"+user+"</div>";
+    if (descr) htmlcontent += "<div class='galleryItemDescr'>"+descr+"</div>";
+
+    htmlcontent += "</div></div>";
+
+    $("#idGallery").append(htmlcontent);
+}
+
+window.addEventListener("load", ()=>{
+    let bpath = window.location.href.split('?')[0];
+    bpath = window.location.href.split('/')[0];
+
+    //let ainst = "https://aton.ispc.cnr.it/";
+    let ainst = bpath + "view.html?s=";
+
+    createItem(ainst+"bfanini/20230929-57ii1i7ht", "Scene1", ATON.PATH_RESTAPI+"cover/bfanini/20230929-57ii1i7ht");
+});
+
+</script>
+</head>
+
+<body class="atonDefaultBody">
+    <div class="topContent">
+        <!-- <h1>ATON for the Metaverse</h1> -->
+        <div id="idGallery" class="galleryContainer"></div>
+
+
+        <div class="appBand">
+            <div class="introQR"><img src="qr-av22.png"><br>Inquadra per l'esperienza</div>
+            <div class="introText">
+            <img src="../../res/aton-logo.png" style="width:64px; height:auto"><br>
+            Il framework open-source <b>ATON</b> (CNR ISPC) fornisce gli strumenti e gli standard per costruire <b>metaversi</b> orientati ai Beni Culturali, accessibili da qualunque dispositivo (da mobile fino ai dispositivi XR) utilizzando il proprio web browser e senza alcuna installazione.<br><br>
+            Ad ArcheoVirtual 2022 vengono esposti alcuni <b>spazi virtuali collaborativi</b>, accessibili con il proprio dispositivo dalla galleria qui sopra assieme ad altri partecipanti (qui in mostra o da casa) in tempo reale.<br><img src="../../res/icons/vrc.png"><br>
+            Sono stati calendarizzati alcuni <a href="https://calendar.google.com/calendar/u/0/embed?src=52cf0e048b924397788ad876fad5212f21a3f1ab2cc02461b5d78ed90e1f4657@group.calendar.google.com&ctz=Europe/Rome" target="_blank"><b>eventi online</b></a> che permetteranno di accedere da ogni parte del mondo ad alcuni ambienti virtuali online, assieme ad esperti, che li racconteranno e illustreranno - creando spazi 3D di discussione e confronto per il Patrimonio Culturale.
+            </div>
+            <!-- <div class="introQR"><img src="aton-online-events.png"><br>Rimani aggiornato<br>Calendario eventi online</div>-->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="atonToolbar atonToolbar-bottom shuFooter">
+    <a href='http://osiris.itabc.cnr.it/aton/' target='_blank'>ATON</a> framework by <a href='https://www.ispc.cnr.it/' target='_blank'>CNR ISPC</a>
+    </div>
+
+<!-- 
+    <video autoplay muted loop class="bgVideo"><source src="bg.mp4" type="video/mp4"></video>
+-->
+</body>
