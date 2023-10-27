@@ -38,8 +38,11 @@
 .introText {
     display: inline-block;
     vertical-align: top;
-    text-align: center;
+    text-align: left;
     /*max-width: 600px;*/
+
+    width: calc(100% - 350px);
+    min-width: 300px;
 
     padding: 5px;
 }
