@@ -43,12 +43,18 @@
 
 <!-- Main entry -->
 <script>
-let createItem = (url, title, urlCover, descr)=>{
+let createItem = (sid, title, descr)=>{
     let htmlcontent = "";
+
+    let urlCover = ATON.PATH_RESTAPI+"cover/"+sid;
+    let url = ATON.BASE_URL+"/s/"+sid+"?";
+    url += "tb=back,vr,qr";
+    //url += "&mk.freq=200"
 
     let coversizex = 300;
     let coversizey = 350;
 
+    //htmlcontent += "<div style='display:block'>";
     htmlcontent += "<div class='galleryItem'>";
 
     // gallery item bg
@@ -64,21 +70,23 @@ let createItem = (url, title, urlCover, descr)=>{
 
     // content
     //htmlcontent += "<br><div class='atonAuthor'><img class='atonSmallIcon' src='"+ATON.PATH_RES+"icons/user.png'>"+user+"</div>";
-    if (descr) htmlcontent += "<div class='galleryItemDescr'>"+descr+"</div>";
+    //if (descr) htmlcontent += "<div class='galleryItemDescr' style='font-size:small'>"+descr+"</div>";
 
+    //htmlcontent += "</div></div><div style='float:right; max-width: 300px'>"+descr+"</div></div>";
     htmlcontent += "</div></div>";
 
     $("#idGallery").append(htmlcontent);
 }
 
 window.addEventListener("load", ()=>{
-    let bpath = window.location.href.split('?')[0];
-    bpath = window.location.href.split('/')[0];
 
-    //let ainst = "https://aton.ispc.cnr.it/";
-    let ainst = bpath + "view.html?s=";
+    createItem("bfanini/20230929-57ii1i7ht", "Cozy house");
+    
+    createItem("bfanini/20230220-4shod14w9", "The tale of two houses");
+    createItem("bfanini/20230220-z7fos1q99", "The tale of the floating Village");
+    createItem("bfanini/20230929-yj3hs9l24", "Why is Digital Heritage important?");
 
-    createItem(ainst+"bfanini/20230929-57ii1i7ht", "Scene1", ATON.PATH_RESTAPI+"cover/bfanini/20230929-57ii1i7ht");
+    createItem("vhlab/20230213-54lv20q4h", "The tomb");
 });
 
 </script>
@@ -91,13 +99,14 @@ window.addEventListener("load", ()=>{
 
 
         <div class="appBand">
-            <div class="introQR"><img src="qr-av22.png"><br>Inquadra per l'esperienza</div>
+            <h1>/imagine</h1>
             <div class="introText">
-            <img src="../../res/aton-logo.png" style="width:64px; height:auto"><br>
-            Il framework open-source <b>ATON</b> (CNR ISPC) fornisce gli strumenti e gli standard per costruire <b>metaversi</b> orientati ai Beni Culturali, accessibili da qualunque dispositivo (da mobile fino ai dispositivi XR) utilizzando il proprio web browser e senza alcuna installazione.<br><br>
-            Ad ArcheoVirtual 2022 vengono esposti alcuni <b>spazi virtuali collaborativi</b>, accessibili con il proprio dispositivo dalla galleria qui sopra assieme ad altri partecipanti (qui in mostra o da casa) in tempo reale.<br><img src="../../res/icons/vrc.png"><br>
-            Sono stati calendarizzati alcuni <a href="https://calendar.google.com/calendar/u/0/embed?src=52cf0e048b924397788ad876fad5212f21a3f1ab2cc02461b5d78ed90e1f4657@group.calendar.google.com&ctz=Europe/Rome" target="_blank"><b>eventi online</b></a> che permetteranno di accedere da ogni parte del mondo ad alcuni ambienti virtuali online, assieme ad esperti, che li racconteranno e illustreranno - creando spazi 3D di discussione e confronto per il Patrimonio Culturale.
+            L’A.I. generativa può essere utilizzata per accelerare la creazione di contenuti per esperienze interattive o ambienti 3D artificiali che gli utenti possono esplorare direttamente con i comuni browser web. Queste esperienze possono coinvolgere modelli 3D, elementi audio-visivi e narrazioni interattive, integrando molteplici servizi A.I. In questi esperimenti, vengono combinati diversi servizi di A.I. generativa per creare contenuti visivi e uditivi, brevi narrazioni e favole; traduttori automatici e servizi text-to-speech per arricchire automaticamente scene 3D annotate semanticamente da professionisti per fruizioni XR.
+            <br><br>
+            Generative A.I. can be used to accelerate content-creation pipelines for interactive experiences or artificial 3D landscapes users can explore using common web browsers. These virtual experiences can incorporate 3D models, audio-visual elements, and interactive storytelling, integrating multiple A.I. services. In these experiments, we combine several generative A.I. services to generate visual and auditory content, short artificial narratives; automatic translators and text-to-speech services to aurally enrich semantically annotated 3D scenes by Heritage professionals for XR consumption.
+
             </div>
+            <div class="introQR"><img src="qr-app.png"><br>Inquadra per l'esperienza</div>
             <!-- <div class="introQR"><img src="aton-online-events.png"><br>Rimani aggiornato<br>Calendario eventi online</div>-->
         </div>
     </div>
