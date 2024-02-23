@@ -49,9 +49,10 @@ let createItem = (sid, title, descr, tb)=>{
     let urlCover = ATON.PATH_RESTAPI+"cover/"+sid;
     let url = ATON.BASE_URL+"/s/"+sid+"?";
 
-    if (tb !== undefined) url += "tb="+tb;
+    if (tb !== undefined){ url += "tb="+tb; console.log(url)}
     else url += "tb=back,vr,qr";
     
+    // Tracking
     url += "&mk.freq=200&mk.dur=600"; //&mk.nav=vr";
 
     let coversizex = 300;
@@ -90,8 +91,8 @@ window.addEventListener("load", ()=>{
     createItem("bfanini/20231026-kjtgo0m0w", "AI Art Gallery");
     createItem("vhlab/20230213-54lv20q4h", "The tomb");
 
-    createItem("bfanini/20240213-txy8q9krt", "Ancient Vase 1", "back,vr,ar,qr");
-    createItem("bfanini/20240213-iewvzrtvm", "Ancient Vase 2", "back,vr,ar,qr");
+    createItem("bfanini/20240213-txy8q9krt", "Ancient Vase 1", undefined, "back,vr,ar,qr");
+    createItem("bfanini/20240213-iewvzrtvm", "Ancient Vase 2", undefined, "back,vr,ar,qr");
     
     createItem("bfanini/20230929-yj3hs9l24", "Why is Digital Heritage important?");
 });
