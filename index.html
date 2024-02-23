@@ -48,10 +48,11 @@ let createItem = (sid, title, descr, tb)=>{
 
     let urlCover = ATON.PATH_RESTAPI+"cover/"+sid;
     let url = ATON.BASE_URL+"/s/"+sid+"?";
-    url += "tb=back,vr,qr";
+
+    if (tb !== undefined) url += "tb="+tb;
+    else url += "tb=back,vr,qr";
     
-    if (tb) url += "&"+tb;
-    else url += "&mk.freq=200&mk.dur=600"; //&mk.nav=vr";
+    url += "&mk.freq=200&mk.dur=600"; //&mk.nav=vr";
 
     let coversizex = 300;
     let coversizey = 350;
@@ -100,9 +101,6 @@ window.addEventListener("load", ()=>{
 
 <body class="atonDefaultBody">
     <div class="topContent">
-        <!-- <h1>ATON for the Metaverse</h1> -->
-        <div id="idGallery" class="galleryContainer"></div>
-
 
         <div class="appBand">
             <h1>/imagine</h1>
@@ -117,6 +115,8 @@ window.addEventListener("load", ()=>{
             
             <!-- <div class="introQR"><img src="aton-online-events.png"><br>Rimani aggiornato<br>Calendario eventi online</div>-->
         </div>
+
+        <div id="idGallery" class="galleryContainer"></div>
     </div>
 
     <!-- Footer -->
