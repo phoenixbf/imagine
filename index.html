@@ -49,7 +49,7 @@ let createItem = (sid, title, descr, tb)=>{
     let urlCover = ATON.PATH_RESTAPI+"cover/"+sid;
     let url = ATON.BASE_URL+"/s/"+sid+"?";
 
-    if (tb !== undefined){ url += "tb="+tb; console.log(url)}
+    if (tb !== undefined){ url += "tb="+tb; }
     else url += "tb=back,vr,qr";
     
     // Tracking
@@ -113,6 +113,8 @@ window.addEventListener("load", ()=>{
             Generative A.I. can be used to accelerate content-creation pipelines for interactive experiences or artificial 3D landscapes users can explore using common web browsers. These virtual experiences can incorporate 3D models, audio-visual elements, and interactive storytelling, integrating multiple A.I. services. In these experiments, we combine several generative A.I. services to generate visual and auditory content, short artificial narratives; automatic translators and text-to-speech services to aurally enrich semantically annotated 3D scenes by Heritage professionals for XR consumption.<br>
             <i>Users are advised that motions in the virtual environments will be tracked and analyzed for research purposes within <a href='https://www.h2iosc.cnr.it/' target='_blank'>H2IOSC</a> project, absolutely anonymously.</i>
             </div>
+
+            <br><img src="res/logos.png" style="width:50%; height:auto">
             
             <!-- <div class="introQR"><img src="aton-online-events.png"><br>Rimani aggiornato<br>Calendario eventi online</div>-->
         </div>
