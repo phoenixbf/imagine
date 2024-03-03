@@ -43,6 +43,8 @@
 
 <!-- Main entry -->
 <script>
+let urlparams = new URLSearchParams(window.location.search);
+
 let createItem = (sid, title, descr, tb)=>{
     let htmlcontent = "";
 
@@ -53,7 +55,7 @@ let createItem = (sid, title, descr, tb)=>{
     else url += "tb=back,vr,qr";
     
     // Tracking
-    url += "&mk.freq=200&mk.dur=600"; //&mk.nav=vr";
+    if (urlparams.get("track")) url += "&mk.freq=200&mk.dur=600"; //&mk.nav=vr";
 
     let coversizex = 300;
     let coversizey = 350;
@@ -84,6 +86,8 @@ let createItem = (sid, title, descr, tb)=>{
 
 window.addEventListener("load", ()=>{
 
+    if (urlparams.get("track")) $("#trackMSG").html("<i>Si avvisano i gentili utenti che gli spostamenti nei vari ambienti virtuali verranno tracciati e analizzati per scopi di ricerca nell'ambito di un pilot del progetto <a href='https://www.h2iosc.cnr.it/' target='_blank'>H2IOSC</a>, in forma assolutamente anonima.</i><br><i>Users are advised that motions in the virtual environments will be tracked and analyzed for research purposes within <a href='https://www.h2iosc.cnr.it/' target='_blank'>H2IOSC</a> project, absolutely anonymously.</i>");
+
     createItem("bfanini/20230220-4shod14w9", "The tale of two houses");
     createItem("bfanini/20230220-z7fos1q99", "The tale of the floating Village");
     createItem("bfanini/20230929-57ii1i7ht", "Cozy house");
@@ -107,14 +111,18 @@ window.addEventListener("load", ()=>{
             <h1>/imagine</h1>
             <div class="introQR"><img src="qr-app.png"><br>Inquadra per l'esperienza</div>
             <div class="introText">
-            L’A.I. generativa può essere utilizzata per accelerare la creazione di contenuti per esperienze interattive o ambienti 3D artificiali che gli utenti possono esplorare direttamente con i comuni browser web. Queste esperienze possono coinvolgere modelli 3D, elementi audio-visivi e narrazioni interattive, integrando molteplici servizi A.I. In questi esperimenti, vengono combinati diversi servizi di A.I. generativa per creare contenuti visivi e uditivi, brevi narrazioni e favole; traduttori automatici e servizi text-to-speech per arricchire automaticamente scene 3D annotate semanticamente da professionisti per fruizioni XR.<br>
-            <i>Si avvisano i gentili utenti che gli spostamenti nei vari ambienti virtuali verranno tracciati e analizzati per scopi di ricerca nell'ambito di un pilot del progetto <a href='https://www.h2iosc.cnr.it/' target='_blank'>H2IOSC</a>, in forma assolutamente anonima.</i>
+            L’A.I. generativa può essere utilizzata per accelerare la creazione di contenuti per esperienze interattive o ambienti 3D artificiali che gli utenti possono esplorare direttamente con i comuni browser web. Queste esperienze possono coinvolgere modelli 3D, elementi audio-visivi e narrazioni interattive, integrando molteplici servizi A.I. In questi esperimenti, vengono combinati diversi servizi di A.I. generativa per creare contenuti visivi e uditivi, brevi narrazioni e favole; traduttori automatici e servizi text-to-speech per arricchire automaticamente scene 3D annotate semanticamente da professionisti per fruizioni XR.
             <br><br>
-            Generative A.I. can be used to accelerate content-creation pipelines for interactive experiences or artificial 3D landscapes users can explore using common web browsers. These virtual experiences can incorporate 3D models, audio-visual elements, and interactive storytelling, integrating multiple A.I. services. In these experiments, we combine several generative A.I. services to generate visual and auditory content, short artificial narratives; automatic translators and text-to-speech services to aurally enrich semantically annotated 3D scenes by Heritage professionals for XR consumption.<br>
-            <i>Users are advised that motions in the virtual environments will be tracked and analyzed for research purposes within <a href='https://www.h2iosc.cnr.it/' target='_blank'>H2IOSC</a> project, absolutely anonymously.</i>
+            Generative A.I. can be used to accelerate content-creation pipelines for interactive experiences or artificial 3D landscapes users can explore using common web browsers. These virtual experiences can incorporate 3D models, audio-visual elements, and interactive storytelling, integrating multiple A.I. services. In these experiments, we combine several generative A.I. services to generate visual and auditory content, short artificial narratives; automatic translators and text-to-speech services to aurally enrich semantically annotated 3D scenes by Heritage professionals for XR consumption.
+            <br><br>
+
+            <div id="trackMSG"></div>
             </div>
 
-            <br><img src="res/logos.png" style="width:50%; height:auto">
+            <br>Contact person: <b>bruno.fanini_AT_cnr.it</b>
+
+            <br><img src="res/logos.png" style="width:50%; height:auto; max-width:600px; min-width:300px; margin-top:15px; margin-bottom:15px;">
+            
             
             <!-- <div class="introQR"><img src="aton-online-events.png"><br>Rimani aggiornato<br>Calendario eventi online</div>-->
         </div>
