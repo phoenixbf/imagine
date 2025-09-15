@@ -11,11 +11,11 @@
 <!-- Add iOS meta tags and icons -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="ArcheoVirtual22">
+<meta name="apple-mobile-web-app-title" content="/imagine">
 <link rel="apple-touch-icon" href="appicon.png">
 
 <!-- OpenGraph tags -->
-<meta property="og:title" content="ArcheoVirtual22" />
+<meta property="og:title" content="/imagine" />
 <meta property="og:description" content="__APPDESC__" />
 <meta property="og:image" content="appicon.png" />
 <meta property="og:image:secure_url" content="appicon.png" />
@@ -33,18 +33,93 @@
 <meta name="theme-color" content="#000000" />
 
 <title>/imagine</title>
-<link rel="stylesheet" type="text/css" href="/res/css/aton.css">
-<link rel="stylesheet" type="text/css" href="app.css">
+<link rel="stylesheet" type="text/css" href="/vendors/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/vendors/bootstrap/css/bootstrap-icons/font/bootstrap-icons.min.css">
+<link rel="stylesheet" type="text/css" href="/res/css/main.css">
+<style>
+.cards-container {
+    display: block;
+    text-align: center;
+/*
+  display: flex;
+  justify-content: center;
+  align-items: center;
+*/
+
+  padding: 20px;
+}
+
+.card-exp {
+    height: 300px;
+    display: inline-block;
+    vertical-align:top;
+}
+
+.cardtext {
+    text-align: left;
+}
+
+.logos-dark {
+    filter: grayscale(100%) brightness(100.0) !important;
+}
+</style>
 
 <!-- Vendors -->
 <script type="text/javascript" src="/vendors/vendors.min.js"></script>
+<script type="text/javascript" src="/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="/dist/THREE.bundle.js"></script>
 <script type="module" src="/src/ATON.js"></script>
 
 <!-- Main entry -->
 <script>
-let urlparams = new URLSearchParams(window.location.search);
+let APP_INSPECT = undefined;
 
+let bInspect = false;
+let exparams = "";
+
+exparams = "?tb=back,vr,devori,qr";
+
+// Capture
+exparams += "&mk.hub=https://interlumo.ispc.cnr.it/kapto/&mk.freq=200&mk.attr=nav,pos,dir&mk.dur=600&mk.actor=AFAM25";
+
+let createCard = (sid, title, descr)=>{
+    return ATON.UI.createSceneCard({
+            sid: sid,
+            title: title,
+            //size: "large",
+            classes: "card-exp",
+            useblurtint: true,
+            subtitle: ATON.UI.createElementFromHTMLString("<p class='cardtext'>"+descr+"</p>"),
+            url: bInspect? APP_INSPECT+"?s="+sid : "/s/"+sid + exparams
+        });
+};
+
+window.addEventListener( 'load', ()=>{
+    APP_INSPECT = ATON.PATH_WAPPS+"merkhet/";
+
+    let urlparams = new URLSearchParams(window.location.search);
+    bInspect = urlparams.get("i");
+
+    let elGallery  = ATON.UI.get("scenes");
+    let elSubTitle = ATON.UI.get("subtitle");
+    let elHeader   = ATON.UI.get("header");
+
+    ATON.realize2D();
+    ATON.UI.setTheme("dark");
+
+    elGallery.append(
+        createCard("bfanini/20230220-4shod14w9", "The Tale of two Houses",""),
+        createCard("bfanini/20230220-z7fos1q99", "The Tale of the Floating Village",""),
+        createCard("bfanini/20230929-57ii1i7ht", "Cozy House",""),
+        createCard("bfanini/20231026-kjtgo0m0w", "AI Art Gallery",""),
+        createCard("bfanini/20240213-txy8q9krt", "Ancient Vase 1",""),
+        createCard("bfanini/20240213-iewvzrtvm", "Ancient Vase 2",""),
+        createCard("bfanini/20250527-swNi6t0pjI", "Ancient Vase 3",""),
+        createCard("smenconero/20241113-tpxfaaj8i", "Barone Rampante","")
+    );
+});
+
+/*
 let createItem = (sid, title, descr, tb)=>{
     let htmlcontent = "";
 
@@ -100,42 +175,33 @@ window.addEventListener("load", ()=>{
     
     createItem("bfanini/20230929-yj3hs9l24", "Why is Digital Heritage important?");
 });
+*/
 
 </script>
 </head>
 
-<body class="atonDefaultBody">
-    <div class="topContent">
+<body>
+    <div id="header">
+        <div class="container col-xxl-8 px-3 py-2">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-4 align-items-center">
+                    <img src="qr-app.png" class="d-block mx-lg-auto img-fluid" loading="lazy" style="width:100%; height:auto; max-width:500px;">
+                </div>
 
-        <div class="appBand">
-            <h1>/imagine</h1>
-            <div class="introQR"><img src="qr-app.png"><br>Inquadra per l'esperienza</div>
-            <div class="introText">
-            L’A.I. generativa può essere utilizzata per accelerare la creazione di contenuti per esperienze interattive o ambienti 3D artificiali che gli utenti possono esplorare direttamente con i comuni browser web. Queste esperienze possono coinvolgere modelli 3D, elementi audio-visivi e narrazioni interattive, integrando molteplici servizi A.I. In questi esperimenti, vengono combinati diversi servizi di A.I. generativa per creare contenuti visivi e uditivi, brevi narrazioni e favole; traduttori automatici e servizi text-to-speech per arricchire automaticamente scene 3D annotate semanticamente da professionisti per fruizioni XR.
-            <br><br>
-            Generative A.I. can be used to accelerate content-creation pipelines for interactive experiences or artificial 3D landscapes users can explore using common web browsers. These virtual experiences can incorporate 3D models, audio-visual elements, and interactive storytelling, integrating multiple A.I. services. In these experiments, we combine several generative A.I. services to generate visual and auditory content, short artificial narratives; automatic translators and text-to-speech services to aurally enrich semantically annotated 3D scenes by Heritage professionals for XR consumption.
-            <br><br>
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold lh-1 mb-3">/imagine</h1>
+                    <p class="lead" id="subtitle" style="font-size: smaller;">
+                        L’AI generativa può essere utilizzata per accelerare la creazione di contenuti per esperienze interattive o ambienti 3D artificiali che gli utenti possono esplorare direttamente con i comuni browser web. Queste esperienze possono coinvolgere modelli 3D, elementi audio-visivi e narrazioni interattive, integrando molteplici servizi AI.<br><br>
+                        
+                        In questa raccolta di esperimenti, vengono combinati diversi servizi di AI generativa per creare contenuti visivi e uditivi, brevi narrazioni e favole; traduttori automatici e servizi text-to-speech per arricchire automaticamente scene 3D annotate semanticamente da professionisti per fruizioni XR o tramite dispositivi comuni.
 
-            <div id="trackMSG"></div>
+<!--                         Generative A.I. can be used to accelerate content-creation pipelines for interactive experiences or artificial 3D landscapes users can explore using common web browsers. These virtual experiences can incorporate 3D models, audio-visual elements, and interactive storytelling, integrating multiple A.I. services. In these experiments, we combine several generative A.I. services to generate visual and auditory content, short artificial narratives; automatic translators and text-to-speech services to aurally enrich semantically annotated 3D scenes by Heritage professionals for XR consumption. -->
+                    </p><br>
+                    <img src="res/logos.png" class="d-block mx-lg-auto img-fluid logos-dark" loading="lazy">
+                </div>
             </div>
-
-            <br>Contact person: <b>bruno.fanini_AT_cnr.it</b>
-
-            <br><img src="res/logos.png" style="width:50%; height:auto; max-width:600px; min-width:300px; margin-top:15px; margin-bottom:15px;">
-            
-            
-            <!-- <div class="introQR"><img src="aton-online-events.png"><br>Rimani aggiornato<br>Calendario eventi online</div>-->
         </div>
-
-        <div id="idGallery" class="galleryContainer"></div>
     </div>
 
-    <!-- Footer -->
-    <div class="atonToolbar atonToolbar-bottom shuFooter">
-    <b>/imagine</b> by CNR ISPC
-    </div>
-
-<!-- 
-    <video autoplay muted loop class="bgVideo"><source src="bg.mp4" type="video/mp4"></video>
--->
+    <div id="scenes" class="cards-container"></div>
 </body>
